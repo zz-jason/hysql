@@ -1,0 +1,37 @@
+#ifndef NANGA_PLANNER_MEMO_H
+#define NANGA_PLANNER_MEMO_H
+
+#include <memory>
+#include <vector>
+
+namespace hysql {
+namespace planner {
+
+// The memo is composed with Group and GroupExprs
+//
+//     PlanNode
+//       /  \
+//      /    \
+//     /      \
+//    /        \
+//   /          \
+// Group(...)  Group (PlanNode, PlanNode, ...)
+//                      /  \
+//                     /    \
+//                   Group  Group (PlanNode, PlanNode, ...)
+//
+
+class PlanNode;
+
+class Group {
+    std::vector<std::shared_ptr<PlanNode> > equivalents_;
+};
+
+class PlanNode {
+    std::vector<std::shared_ptr<Group> > children_;
+};
+
+} // namespace planner
+} // namespace hysql
+
+#endif

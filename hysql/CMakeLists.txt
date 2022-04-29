@@ -1,0 +1,6 @@
+add_subdirectory(server)
+add_subdirectory(metadata)
+add_subdirectory(planner)
+add_subdirectory(runtime)
+add_subdirectory(coordinator)
+add_subdirectory(util)
